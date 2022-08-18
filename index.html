@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    
+    
+
+    <title>Javascript 30: Flex Panels Image Gallery</title>
+    <link href='https://fonts.googleapis.com/css?family=Amatic+SC'>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+  <div class="panels">
+        <div class="panel panel1" onclick="play()">
+          <p>elevate</p>
+          <p>your</p>
+          <p>life</p>
+        </div>
+        <div class="panel panel2" onclick="playthree()">
+          <p>move</p>
+          <p>only</p>
+          <p>forward</p>
+        </div>
+        <div class="panel panel3" onclick="playtwo()">
+          <p>don't</p>
+          <p>limit</p>
+          <p>yourself</p>
+        </div>
+        <div class="panel panel4" onclick="playthree()">
+          <p>resilience</p>
+          <p>is</p>
+          <p>key</p>
+        </div>
+        <div class="panel panel5" onclick="play()">
+          <p>believe</p>
+          <p>you</p>
+          <p>can</p>
+        </div>
+  </div>
+    
+  <audio id="audioboom" src="sounds/boom.wav"></audio>
+  <audio id="audioclap" src="sounds/clap.wav"></audio>
+  <audio id="audiohihat" src="sounds/hihat.wav"></audio>
+
+      <script>
+        const panels = document.querySelectorAll('.panel');
+
+        function toggleOpen() {
+          this.classList.toggle('open');
+        }
+
+        function toggleActive(e) {
+          if (e.propertyName.includes('flex')) {
+            this.classList.toggle('open-active');
+          }
+        }
+
+       
+
+        /*function play() {
+          const collection = ["sounds/boom.wav", "sounds/clap.wav", "sounds/hihat.wav"];
+          const audio = Math.floor(Math.random() * (collection.length));
+          audio = collection[audio];
+          audio.play();
+        };*/
+
+        /*this one works!!!*/
+        function play() {
+          const audio = document.getElementById("audioboom");
+          audio.play();
+        }
+
+        function playtwo() {
+          const audio = document.getElementById("audioclap");
+          audio.play();
+        }
+
+        function playthree() {
+          const audio = document.getElementById("audiohihat");
+          audio.play();
+        }
+
+
+        /*function play() {
+          const sounds = ["sounds/boom.wav", "sounds/clap.wav", "sounds/hihat.wav"];
+          const soundFiles = sounds[Math.floor(Math.random()*sounds.length)];
+          soundFiles.play();
+        
+        }*/
+
+
+        panels.forEach(panel => panel.addEventListener('click', toggleOpen));
+        panels.forEach(panel => panel.addEventListener('transitionend', toggleActive));
+
+        
+      
+   
+
+      </script>
+    
+    
+    
+</body>
+
+</html>
